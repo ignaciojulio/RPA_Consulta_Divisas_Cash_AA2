@@ -1,0 +1,50 @@
+# ============================================================
+#  .gitignore — RPA_Consulta_Divisas_Cash_AA2
+#  UiPath Studio — Modern Design
+# ============================================================
+
+# ─── UiPath: Caché y compilación local ─────────────────────
+.local/
+.settings/
+.objects/
+.project/
+.tmh/
+*.nuget.props
+*.nuget.targets
+nuget.cache
+PackageCache.json
+AllDependencies.json
+WorkflowFileValidator.cache
+
+# ─── UiPath: Metadatos de diseño (no necesarios en repo) ───
+*.xaml.json
+entry-points.json
+
+# ─── Datos sensibles / Archivos Excel locales ──────────────
+# El archivo de datos históricos NO se sube al repo
+Control_Divisas.xlsx
+*.xlsx
+*.xls
+
+# ─── Windows ───────────────────────────────────────────────
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# ─── IDEs ──────────────────────────────────────────────────
+.vs/
+.vscode/
+*.suo
+*.user
+
+# ─── Lo que SÍ se versiona (archivos clave del proyecto) ───
+# ✅ Main.xaml
+# ✅ Inicializacion.xaml
+# ✅ Extraer_TRM_USD.xaml
+# ✅ Extraer_TRM_EUR.xaml
+# ✅ Limpieza_Validacion_Datos.xaml
+# ✅ Registro_Excel.xaml
+# ✅ project.json
+# ✅ project.uiproj
+# ✅ README.md
+# ✅ DOCUMENTACION_TECNICA.md

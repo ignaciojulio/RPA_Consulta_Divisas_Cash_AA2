@@ -1,0 +1,6 @@
+{
+  "Name": "RPA_Consulta_Divisas_Cash_AA2",
+  "ProjectType": "Process",
+  "Description": "Automatización robótica diseñada para la empresa de divisas \"Cash\". El proceso realiza la extracción autónoma de la TRM para USD y EUR desde portales financieros web, ejecuta la validación de integridad de los datos y registra la información histórica en un archivo maestro de Excel para optimizar la eficiencia organizacional.",
+  "MainFile": "Main.xaml"
+}

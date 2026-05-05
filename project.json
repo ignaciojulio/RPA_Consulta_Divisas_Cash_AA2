@@ -1,0 +1,89 @@
+{
+  "name": "RPA_Consulta_Divisas_Cash_AA2",
+  "projectId": "a4f272eb-8d9b-47d4-851b-abbddcd21cc7",
+  "description": "Automatización robótica diseñada para la empresa de divisas \"Cash\". El proceso realiza la extracción autónoma de la TRM para USD y EUR desde portales financieros web, ejecuta la validación de integridad de los datos y registra la información histórica en un archivo maestro de Excel para optimizar la eficiencia organizacional.",
+  "main": "Main.xaml",
+  "dependencies": {
+    "UiPath.Excel.Activities": "3.4.1",
+    "UiPath.System.Activities": "[26.2.4]",
+    "UiPath.UIAutomation.Activities": "25.10.26"
+  },
+  "webServices": [],
+  "entitiesStores": [],
+  "schemaVersion": "4.0",
+  "studioVersion": "26.0.192.0",
+  "projectVersion": "1.0.0",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "netFrameworkLazyLoading": false,
+    "isPausable": true,
+    "isAttended": false,
+    "requiresUserInteraction": true,
+    "supportsPersistence": false,
+    "workflowSerialization": "NewtonsoftJson",
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow",
+    "readyForPiP": false,
+    "startsInPiP": false,
+    "mustRestoreAllDependencies": true,
+    "pipType": "ChildSession"
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "privateWorkflows": []
+    },
+    "processOptions": {
+      "ignoredFiles": []
+    },
+    "fileInfoCollection": [],
+    "saveToCloud": false
+  },
+  "expressionLanguage": "VisualBasic",
+  "entryPoints": [
+    {
+      "filePath": "Main.xaml",
+      "uniqueId": "6b19b48e-90ef-4f1f-a873-7d57ebdcd794",
+      "input": [],
+      "output": []
+    },
+    {
+      "filePath": "Inicializacion.xaml",
+      "uniqueId": "0abb643c-d28a-4ef4-85f1-e11d46a18c70",
+      "input": [],
+      "output": []
+    },
+    {
+      "filePath": "Extraer_TRM_USD.xaml",
+      "uniqueId": "e6780d40-d292-43a2-8059-dffff59bd88b",
+      "input": [],
+      "output": []
+    },
+    {
+      "filePath": "Extraer_TRM_EUR.xaml",
+      "uniqueId": "299d6768-cb7d-4d5c-b790-f804e7597570",
+      "input": [],
+      "output": []
+    },
+    {
+      "filePath": "Limpieza_Validacion_Datos.xaml",
+      "uniqueId": "ce29c046-fe9d-406a-9e67-05ec36f82378",
+      "input": [],
+      "output": []
+    },
+    {
+      "filePath": "Registro_Excel.xaml",
+      "uniqueId": "04a88537-f35a-461b-b458-842c0d1aeb15",
+      "input": [],
+      "output": []
+    }
+  ],
+  "isTemplate": false,
+  "templateProjectData": {},
+  "publishData": {},
+  "targetFramework": "Windows"
+}
