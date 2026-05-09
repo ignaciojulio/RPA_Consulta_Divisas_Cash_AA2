@@ -237,7 +237,7 @@
       <AssemblyReference>System.Private.Uri</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="588,2068.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_24">
+  <Sequence sap:VirtualizedContainerService.HintSize="900,2068.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_24">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="PathExcel" />
       <Variable x:TypeArguments="x:String" Name="strValorUSD" />
@@ -266,129 +266,101 @@
         </InArgument>
       </ui:LogMessage.Message>
     </ui:LogMessage>
-    <TryCatch DisplayName="Global Try-Catch block for the entire process execution." sap:VirtualizedContainerService.HintSize="588,1790.6666666666667" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+    <TryCatch DisplayName="Global Try-Catch block for the entire process execution." sap:VirtualizedContainerService.HintSize="452,1437.3333333333333" sap2010:WorkflowViewState.IdRef="TryCatch_3">
       <TryCatch.Try>
-        <Sequence DisplayName="Intentar" sap:VirtualizedContainerService.HintSize="586,1444.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_22">
+        <Sequence DisplayName="Intentar" sap:VirtualizedContainerService.HintSize="450,1114" sap2010:WorkflowViewState.IdRef="Sequence_22">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence DisplayName="Intentar" sap:VirtualizedContainerService.HintSize="552,1384.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_21">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <Sequence DisplayName="Intentar" sap:VirtualizedContainerService.HintSize="518,1302" sap2010:WorkflowViewState.IdRef="Sequence_20">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-              <Sequence DisplayName="Intentar" sap:VirtualizedContainerService.HintSize="484,1219.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_19">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <Sequence DisplayName="Intentar" sap:VirtualizedContainerService.HintSize="450,1136.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_18">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Invoke Inicializacion.xaml to get PathExcel." sap:VirtualizedContainerService.HintSize="416,177.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False">
-                    <ui:InvokeWorkflowFile.Arguments>
-                      <OutArgument x:TypeArguments="x:String" x:Key="PathExcel">
-                        <VisualBasicReference x:TypeArguments="x:String" ExpressionText="PathExcel" sap2010:WorkflowViewState.IdRef="VisualBasicReference`1_1" />
-                      </OutArgument>
-                    </ui:InvokeWorkflowFile.Arguments>
-                    <ui:InvokeWorkflowFile.WorkflowFileName>
-                      <InArgument x:TypeArguments="x:String">
-                        <Literal x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="Literal`1_2">C:\\Users\\ignacioj.julio\\Documents\\UiPath\\RPA_Consulta_Divisas_Cash_AA2\\Inicializacion.xaml</Literal>
-                      </InArgument>
-                    </ui:InvokeWorkflowFile.WorkflowFileName>
-                  </ui:InvokeWorkflowFile>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Invoke Extraer_TRM_USD.xaml to extract USD value." sap:VirtualizedContainerService.HintSize="416,177.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False">
-                    <ui:InvokeWorkflowFile.Arguments>
-                      <OutArgument x:TypeArguments="x:String" x:Key="strValorUSD">
-                        <VisualBasicReference x:TypeArguments="x:String" ExpressionText="strValorUSD" sap2010:WorkflowViewState.IdRef="VisualBasicReference`1_2" />
-                      </OutArgument>
-                    </ui:InvokeWorkflowFile.Arguments>
-                    <ui:InvokeWorkflowFile.WorkflowFileName>
-                      <InArgument x:TypeArguments="x:String">
-                        <Literal x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="Literal`1_3">C:\\Users\\ignacioj.julio\\Documents\\UiPath\\RPA_Consulta_Divisas_Cash_AA2\\Extraer_TRM_USD.xaml</Literal>
-                      </InArgument>
-                    </ui:InvokeWorkflowFile.WorkflowFileName>
-                  </ui:InvokeWorkflowFile>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Invoke Extraer_TRM_EUR.xaml to extract EUR value." sap:VirtualizedContainerService.HintSize="416,177.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False">
-                    <ui:InvokeWorkflowFile.Arguments>
-                      <OutArgument x:TypeArguments="x:String" x:Key="strValorEUR">
-                        <VisualBasicReference x:TypeArguments="x:String" ExpressionText="strValorEUR" sap2010:WorkflowViewState.IdRef="VisualBasicReference`1_3" />
-                      </OutArgument>
-                    </ui:InvokeWorkflowFile.Arguments>
-                    <ui:InvokeWorkflowFile.WorkflowFileName>
-                      <InArgument x:TypeArguments="x:String">
-                        <Literal x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="Literal`1_4">C:\\Users\\ignacioj.julio\\Documents\\UiPath\\RPA_Consulta_Divisas_Cash_AA2\\Extraer_TRM_EUR.xaml</Literal>
-                      </InArgument>
-                    </ui:InvokeWorkflowFile.WorkflowFileName>
-                  </ui:InvokeWorkflowFile>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Invoke Limpieza_Validacion_Datos.xaml to clean and validate data." sap:VirtualizedContainerService.HintSize="416,177.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False">
-                    <ui:InvokeWorkflowFile.Arguments>
-                      <InArgument x:TypeArguments="x:String" x:Key="strValorEUR">
-                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strValorEUR" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_3" />
-                      </InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="strValorUSD">
-                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strValorUSD" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_4" />
-                      </InArgument>
-                      <OutArgument x:TypeArguments="x:Double" x:Key="numValorUSD">
-                        <VisualBasicReference x:TypeArguments="x:Double" ExpressionText="numValorUSD" sap2010:WorkflowViewState.IdRef="VisualBasicReference`1_4" />
-                      </OutArgument>
-                      <OutArgument x:TypeArguments="x:Double" x:Key="numValorEUR">
-                        <VisualBasicReference x:TypeArguments="x:Double" ExpressionText="numValorEUR" sap2010:WorkflowViewState.IdRef="VisualBasicReference`1_5" />
-                      </OutArgument>
-                    </ui:InvokeWorkflowFile.Arguments>
-                    <ui:InvokeWorkflowFile.WorkflowFileName>
-                      <InArgument x:TypeArguments="x:String">
-                        <Literal x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="Literal`1_5">C:\\Users\\ignacioj.julio\\Documents\\UiPath\\RPA_Consulta_Divisas_Cash_AA2\\Limpieza_Validacion_Datos.xaml</Literal>
-                      </InArgument>
-                    </ui:InvokeWorkflowFile.WorkflowFileName>
-                  </ui:InvokeWorkflowFile>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Invoke Registro_Excel.xaml to register processed data." sap:VirtualizedContainerService.HintSize="416,177.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False">
-                    <ui:InvokeWorkflowFile.Arguments>
-                      <InArgument x:TypeArguments="x:Double" x:Key="in_numValorEUR">
-                        <VisualBasicValue x:TypeArguments="x:Double" ExpressionText="numValorEUR" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_5" />
-                      </InArgument>
-                      <InArgument x:TypeArguments="x:Double" x:Key="in_numValorUSD">
-                        <VisualBasicValue x:TypeArguments="x:Double" ExpressionText="numValorUSD" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_6" />
-                      </InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_PathExcel">
-                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="PathExcel" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_7" />
-                      </InArgument>
-                    </ui:InvokeWorkflowFile.Arguments>
-                    <ui:InvokeWorkflowFile.WorkflowFileName>
-                      <InArgument x:TypeArguments="x:String">
-                        <Literal x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="Literal`1_6">C:\\Users\\ignacioj.julio\\Documents\\UiPath\\RPA_Consulta_Divisas_Cash_AA2\\Registro_Excel.xaml</Literal>
-                      </InArgument>
-                    </ui:InvokeWorkflowFile.WorkflowFileName>
-                  </ui:InvokeWorkflowFile>
-                  <ui:LogMessage DisplayName="Log the successful end of the Cash Divisas process." sap:VirtualizedContainerService.HintSize="416,167.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_6">
-                    <ui:LogMessage.Level>
-                      <InArgument x:TypeArguments="ui:LogLevel">
-                        <Literal x:TypeArguments="ui:LogLevel" sap2010:WorkflowViewState.IdRef="Literal`1_7" Value="Info" />
-                      </InArgument>
-                    </ui:LogMessage.Level>
-                    <ui:LogMessage.Message>
-                      <InArgument x:TypeArguments="x:Object">
-                        <VisualBasicValue x:TypeArguments="x:Object" ExpressionText="&quot;Error en proceso Cash Divisas.&quot;" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_2" />
-                      </InArgument>
-                    </ui:LogMessage.Message>
-                  </ui:LogMessage>
-                </Sequence>
-              </Sequence>
-            </Sequence>
-          </Sequence>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Invoke Inicializacion.xaml to get PathExcel." sap:VirtualizedContainerService.HintSize="416,177.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False">
+            <ui:InvokeWorkflowFile.Arguments>
+              <OutArgument x:TypeArguments="x:String" x:Key="PathExcel">
+                <VisualBasicReference x:TypeArguments="x:String" ExpressionText="PathExcel" sap2010:WorkflowViewState.IdRef="VisualBasicReference`1_1" />
+              </OutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+            <ui:InvokeWorkflowFile.WorkflowFileName>
+              <InArgument x:TypeArguments="x:String">
+                <Literal x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="Literal`1_2">C:\\Users\\ignacioj.julio\\Documents\\UiPath\\RPA_Consulta_Divisas_Cash_AA2\\Inicializacion.xaml</Literal>
+              </InArgument>
+            </ui:InvokeWorkflowFile.WorkflowFileName>
+          </ui:InvokeWorkflowFile>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Invoke Extraer_TRM_USD.xaml to extract USD value." sap:VirtualizedContainerService.HintSize="416,177.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False">
+            <ui:InvokeWorkflowFile.Arguments>
+              <OutArgument x:TypeArguments="x:String" x:Key="strValorUSD">
+                <VisualBasicReference x:TypeArguments="x:String" ExpressionText="strValorUSD" sap2010:WorkflowViewState.IdRef="VisualBasicReference`1_2" />
+              </OutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+            <ui:InvokeWorkflowFile.WorkflowFileName>
+              <InArgument x:TypeArguments="x:String">
+                <Literal x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="Literal`1_3">C:\\Users\\ignacioj.julio\\Documents\\UiPath\\RPA_Consulta_Divisas_Cash_AA2\\Extraer_TRM_USD.xaml</Literal>
+              </InArgument>
+            </ui:InvokeWorkflowFile.WorkflowFileName>
+          </ui:InvokeWorkflowFile>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Invoke Extraer_TRM_EUR.xaml to extract EUR value." sap:VirtualizedContainerService.HintSize="416,177.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False">
+            <ui:InvokeWorkflowFile.Arguments>
+              <OutArgument x:TypeArguments="x:String" x:Key="strValorEUR">
+                <VisualBasicReference x:TypeArguments="x:String" ExpressionText="strValorEUR" sap2010:WorkflowViewState.IdRef="VisualBasicReference`1_3" />
+              </OutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+            <ui:InvokeWorkflowFile.WorkflowFileName>
+              <InArgument x:TypeArguments="x:String">
+                <Literal x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="Literal`1_4">C:\\Users\\ignacioj.julio\\Documents\\UiPath\\RPA_Consulta_Divisas_Cash_AA2\\Extraer_TRM_EUR.xaml</Literal>
+              </InArgument>
+            </ui:InvokeWorkflowFile.WorkflowFileName>
+          </ui:InvokeWorkflowFile>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Invoke Limpieza_Validacion_Datos.xaml to clean and validate data." sap:VirtualizedContainerService.HintSize="416,177.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="strValorEUR">
+                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strValorEUR" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_3" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="strValorUSD">
+                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strValorUSD" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_4" />
+              </InArgument>
+              <OutArgument x:TypeArguments="x:Double" x:Key="numValorUSD">
+                <VisualBasicReference x:TypeArguments="x:Double" ExpressionText="numValorUSD" sap2010:WorkflowViewState.IdRef="VisualBasicReference`1_4" />
+              </OutArgument>
+              <OutArgument x:TypeArguments="x:Double" x:Key="numValorEUR">
+                <VisualBasicReference x:TypeArguments="x:Double" ExpressionText="numValorEUR" sap2010:WorkflowViewState.IdRef="VisualBasicReference`1_5" />
+              </OutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+            <ui:InvokeWorkflowFile.WorkflowFileName>
+              <InArgument x:TypeArguments="x:String">
+                <Literal x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="Literal`1_5">C:\\Users\\ignacioj.julio\\Documents\\UiPath\\RPA_Consulta_Divisas_Cash_AA2\\Limpieza_Validacion_Datos.xaml</Literal>
+              </InArgument>
+            </ui:InvokeWorkflowFile.WorkflowFileName>
+          </ui:InvokeWorkflowFile>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" DisplayName="Invoke Registro_Excel.xaml to register processed data." sap:VirtualizedContainerService.HintSize="416,177.33333333333334" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:Double" x:Key="in_numValorEUR">
+                <VisualBasicValue x:TypeArguments="x:Double" ExpressionText="numValorEUR" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_5" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:Double" x:Key="in_numValorUSD">
+                <VisualBasicValue x:TypeArguments="x:Double" ExpressionText="numValorUSD" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_6" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_PathExcel">
+                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="PathExcel" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_7" />
+              </InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+            <ui:InvokeWorkflowFile.WorkflowFileName>
+              <InArgument x:TypeArguments="x:String">
+                <Literal x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="Literal`1_6">C:\\Users\\ignacioj.julio\\Documents\\UiPath\\RPA_Consulta_Divisas_Cash_AA2\\Registro_Excel.xaml</Literal>
+              </InArgument>
+            </ui:InvokeWorkflowFile.WorkflowFileName>
+          </ui:InvokeWorkflowFile>
+          <ui:LogMessage DisplayName="Log the successful end of the Cash Divisas process." sap:VirtualizedContainerService.HintSize="416,167.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_6">
+            <ui:LogMessage.Level>
+              <InArgument x:TypeArguments="ui:LogLevel">
+                <Literal x:TypeArguments="ui:LogLevel" sap2010:WorkflowViewState.IdRef="Literal`1_7" Value="Info" />
+              </InArgument>
+            </ui:LogMessage.Level>
+            <ui:LogMessage.Message>
+              <InArgument x:TypeArguments="x:Object">
+                <VisualBasicValue x:TypeArguments="x:Object" ExpressionText="&quot;Error en proceso Cash Divisas.&quot;" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_2" />
+              </InArgument>
+            </ui:LogMessage.Message>
+          </ui:LogMessage>
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
@@ -397,7 +369,7 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="586,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_23">
+            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="450,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_23">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -408,7 +380,7 @@
         </Catch>
       </TryCatch.Catches>
       <TryCatch.Finally>
-        <Sequence DisplayName="Finalmente" sap:VirtualizedContainerService.HintSize="586,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_25">
+        <Sequence DisplayName="Finalmente" sap:VirtualizedContainerService.HintSize="450,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_25">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>

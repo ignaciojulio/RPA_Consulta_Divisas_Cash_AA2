@@ -252,7 +252,7 @@
       <AssemblyReference>Microsoft.VisualStudio.Validation</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="900,1434" sap2010:WorkflowViewState.IdRef="Sequence_105">
+  <Sequence sap:VirtualizedContainerService.HintSize="900,1600" sap2010:WorkflowViewState.IdRef="Sequence_105">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="PathExcel" />
       <Variable x:TypeArguments="x:Boolean" Name="fileExists" />
@@ -263,8 +263,8 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ManualTrigger Result="{x:Null}" DisplayName="Start the process manually." sap:VirtualizedContainerService.HintSize="554,78.66666666666667" sap2010:WorkflowViewState.IdRef="ManualTrigger_14" />
-    <Assign DisplayName="Clean the input USD string by removing currency symbols, spaces, and commas to reinforce numeric format tolerance." sap:VirtualizedContainerService.HintSize="554,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_54">
+    <ui:ManualTrigger Result="{x:Null}" DisplayName="Start the process manually." sap:VirtualizedContainerService.HintSize="488,78.66666666666667" sap2010:WorkflowViewState.IdRef="ManualTrigger_14" />
+    <Assign DisplayName="Clean the input USD string by removing currency symbols, spaces, and commas to reinforce numeric format tolerance." sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_54">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">
           <VisualBasicReference x:TypeArguments="x:String" ExpressionText="strValorUSD" sap2010:WorkflowViewState.IdRef="VisualBasicReference`1_14" />
@@ -276,7 +276,7 @@
         </InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="Clean the input EUR string by removing currency symbols, spaces, and commas to reinforce numeric format tolerance." sap:VirtualizedContainerService.HintSize="554,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_55">
+    <Assign DisplayName="Clean the input EUR string by removing currency symbols, spaces, and commas to reinforce numeric format tolerance." sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_55">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">
           <VisualBasicReference x:TypeArguments="x:String" ExpressionText="strValorEUR" sap2010:WorkflowViewState.IdRef="VisualBasicReference`1_15" />
@@ -288,7 +288,7 @@
         </InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="Parse the cleaned USD string into a double using InvariantCulture." sap:VirtualizedContainerService.HintSize="554,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_56">
+    <Assign DisplayName="Parse the cleaned USD string into a double using InvariantCulture." sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_56">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Double">
           <VisualBasicReference x:TypeArguments="x:Double" ExpressionText="numValorUSD" sap2010:WorkflowViewState.IdRef="VisualBasicReference`1_16" />
@@ -300,7 +300,7 @@
         </InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="Parse the cleaned EUR string into a double using InvariantCulture." sap:VirtualizedContainerService.HintSize="554,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_57">
+    <Assign DisplayName="Parse the cleaned EUR string into a double using InvariantCulture." sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_57">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Double">
           <VisualBasicReference x:TypeArguments="x:Double" ExpressionText="numValorEUR" sap2010:WorkflowViewState.IdRef="VisualBasicReference`1_17" />
@@ -312,90 +312,63 @@
         </InArgument>
       </Assign.Value>
     </Assign>
-    <If DisplayName="Check if both parsed currency values are greater than zero." sap:VirtualizedContainerService.HintSize="554,626" sap2010:WorkflowViewState.IdRef="If_14">
+    <If DisplayName="Check if both parsed currency values are greater than zero." sap:VirtualizedContainerService.HintSize="488,792" sap2010:WorkflowViewState.IdRef="If_14">
       <If.Condition>
         <InArgument x:TypeArguments="x:Boolean">
           <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="numValorUSD &gt; 0R AndAlso numValorEUR &gt; 0R" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_25" />
         </InArgument>
       </If.Condition>
       <If.Then>
-        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="552,475.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_99">
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="486,227.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_99">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="518,415.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_98">
+          <ui:LogMessage DisplayName="Log a success message indicating the data is valid." sap:VirtualizedContainerService.HintSize="452,167.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_14">
+            <ui:LogMessage.Level>
+              <InArgument x:TypeArguments="ui:LogLevel">
+                <Literal x:TypeArguments="ui:LogLevel" sap2010:WorkflowViewState.IdRef="Literal`1_4" Value="Info" />
+              </InArgument>
+            </ui:LogMessage.Level>
+            <ui:LogMessage.Message>
+              <InArgument x:TypeArguments="x:Object">
+                <VisualBasicValue x:TypeArguments="x:Object" ExpressionText="&quot;Validación RF-02 superada: Datos convertidos correctamente y listos para Excel&quot;" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_26" />
+              </InArgument>
+            </ui:LogMessage.Message>
+          </ui:LogMessage>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="486,434" sap2010:WorkflowViewState.IdRef="Sequence_104">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Sequence DisplayName="Handle invalid currency values with a business rule exception." sap:VirtualizedContainerService.HintSize="452,374" sap2010:WorkflowViewState.IdRef="Sequence_100">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="484,332.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_97">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,250" sap2010:WorkflowViewState.IdRef="Sequence_96">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log a success message indicating the data is valid." sap:VirtualizedContainerService.HintSize="416,167.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_14">
-                  <ui:LogMessage.Level>
-                    <InArgument x:TypeArguments="ui:LogLevel">
-                      <Literal x:TypeArguments="ui:LogLevel" sap2010:WorkflowViewState.IdRef="Literal`1_4" Value="Info" />
-                    </InArgument>
-                  </ui:LogMessage.Level>
-                  <ui:LogMessage.Message>
-                    <InArgument x:TypeArguments="x:Object">
-                      <VisualBasicValue x:TypeArguments="x:Object" ExpressionText="&quot;Validación RF-02 superada: Datos convertidos correctamente y listos para Excel&quot;" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_26" />
-                    </InArgument>
-                  </ui:LogMessage.Message>
-                </ui:LogMessage>
-              </Sequence>
-            </Sequence>
-          </Sequence>
-        </Sequence>
-      </If.Then>
-      <If.Else>
-        <Sequence DisplayName="Else" sap2010:WorkflowViewState.IdRef="Sequence_104">
-          <Sequence DisplayName="Else" sap2010:WorkflowViewState.IdRef="Sequence_103">
-            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="492,234.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_102">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="458,174.66666666666666" sap2010:WorkflowViewState.IdRef="Sequence_101">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <Sequence DisplayName="Handle invalid currency values with a business rule exception." sap2010:WorkflowViewState.IdRef="Sequence_100">
-                  <Assign DisplayName="Assign a new BusinessRuleException to 'businessEx' variable." sap2010:WorkflowViewState.IdRef="Assign_58">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="ui:BusinessRuleException">
-                        <VisualBasicReference x:TypeArguments="ui:BusinessRuleException" ExpressionText="businessEx" sap2010:WorkflowViewState.IdRef="VisualBasicReference`1_18" />
-                      </OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="ui:BusinessRuleException">
-                        <VisualBasicValue x:TypeArguments="ui:BusinessRuleException" ExpressionText="New UiPath.Core.BusinessRuleException(&quot;Error de integridad: Los valores de las divisas no son numéricos válidos o son menores a cero.&quot;)" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_27" />
-                      </InArgument>
-                    </Assign.Value>
-                  </Assign>
-                  <Throw DisplayName="Throw the created business rule exception." sap2010:WorkflowViewState.IdRef="Throw_14">
-                    <InArgument x:TypeArguments="s:Exception">
-                      <VisualBasicValue x:TypeArguments="s:Exception" ExpressionText="businessEx" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_28" />
-                    </InArgument>
-                  </Throw>
-                </Sequence>
-              </Sequence>
-            </Sequence>
+            <Assign DisplayName="Assign a new BusinessRuleException to 'businessEx' variable." sap:VirtualizedContainerService.HintSize="418,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_58">
+              <Assign.To>
+                <OutArgument x:TypeArguments="ui:BusinessRuleException">
+                  <VisualBasicReference x:TypeArguments="ui:BusinessRuleException" ExpressionText="businessEx" sap2010:WorkflowViewState.IdRef="VisualBasicReference`1_18" />
+                </OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="ui:BusinessRuleException">
+                  <VisualBasicValue x:TypeArguments="ui:BusinessRuleException" ExpressionText="New UiPath.Core.BusinessRuleException(&quot;Error de integridad: Los valores de las divisas no son numéricos válidos o son menores a cero.&quot;)" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_27" />
+                </InArgument>
+              </Assign.Value>
+            </Assign>
+            <Throw DisplayName="Throw the created business rule exception." sap:VirtualizedContainerService.HintSize="418,114.66666666666667" sap2010:WorkflowViewState.IdRef="Throw_14">
+              <InArgument x:TypeArguments="s:Exception">
+                <VisualBasicValue x:TypeArguments="s:Exception" ExpressionText="businessEx" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_28" />
+              </InArgument>
+            </Throw>
           </Sequence>
         </Sequence>
       </If.Else>

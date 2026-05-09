@@ -233,7 +233,7 @@
       <AssemblyReference>System.Net.Sockets</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="522,1368.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_11">
+  <Sequence sap:VirtualizedContainerService.HintSize="900,1286" sap2010:WorkflowViewState.IdRef="Sequence_11">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="PathExcel" />
       <Variable x:TypeArguments="x:Boolean" Name="fileExists" />
@@ -246,67 +246,60 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ManualTrigger Result="{x:Null}" DisplayName="Start the process manually." sap:VirtualizedContainerService.HintSize="522,78.66666666666667" sap2010:WorkflowViewState.IdRef="ManualTrigger_2" />
-    <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry the extraction process up to 3 times." sap:VirtualizedContainerService.HintSize="522,1267.3333333333333" sap2010:WorkflowViewState.IdRef="RetryScope_2">
+    <ui:ManualTrigger Result="{x:Null}" DisplayName="Start the process manually." sap:VirtualizedContainerService.HintSize="488,78.66666666666667" sap2010:WorkflowViewState.IdRef="ManualTrigger_2" />
+    <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry the extraction process up to 3 times." sap:VirtualizedContainerService.HintSize="488,1184.6666666666667" sap2010:WorkflowViewState.IdRef="RetryScope_2">
       <ui:RetryScope.ActivityBody>
         <ActivityAction>
-          <Sequence DisplayName="ActivityBody" sap:VirtualizedContainerService.HintSize="520,1069.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_10">
+          <Sequence DisplayName="ActivityBody" sap:VirtualizedContainerService.HintSize="486,986.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_10">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <TryCatch DisplayName="Try to extract the dollar value, and handle potential errors." sap:VirtualizedContainerService.HintSize="486,1009.3333333333334" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+            <TryCatch DisplayName="Try to extract the dollar value, and handle potential errors." sap:VirtualizedContainerService.HintSize="452,926.6666666666666" sap2010:WorkflowViewState.IdRef="TryCatch_2">
               <TryCatch.Try>
-                <Sequence DisplayName="Intentar" sap:VirtualizedContainerService.HintSize="484,663.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                <Sequence DisplayName="Intentar" sap:VirtualizedContainerService.HintSize="450,580.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_8">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Sequence DisplayName="Intentar" sap:VirtualizedContainerService.HintSize="450,603.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_7">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <ui:LogMessage DisplayName="Log a placeholder message for opening the browser and getting the text, as UI Automation activities are not available." sap:VirtualizedContainerService.HintSize="416,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_3">
-                      <ui:LogMessage.Level>
-                        <InArgument x:TypeArguments="ui:LogLevel">
-                          <Literal x:TypeArguments="ui:LogLevel" sap2010:WorkflowViewState.IdRef="Literal`1_2" Value="Info" />
-                        </InArgument>
-                      </ui:LogMessage.Level>
-                      <ui:LogMessage.Message>
-                        <InArgument x:TypeArguments="x:Object">
-                          <VisualBasicValue x:TypeArguments="x:Object" ExpressionText="&quot;Placeholder for: Use Application/Browser (Edge, https://www.google.com/finance/quote/USD-COP) and Get Text.&quot;" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_1" />
-                        </InArgument>
-                      </ui:LogMessage.Message>
-                    </ui:LogMessage>
-                    <Assign DisplayName="Assign a placeholder value to the strValorUSD variable." sap:VirtualizedContainerService.HintSize="416,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_2">
-                      <Assign.To>
-                        <OutArgument x:TypeArguments="x:String">
-                          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="strValorUSD" sap2010:WorkflowViewState.IdRef="VisualBasicReference`1_1" />
-                        </OutArgument>
-                      </Assign.To>
-                      <Assign.Value>
-                        <InArgument x:TypeArguments="x:String">
-                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;5000.00&quot;" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_2" />
-                        </InArgument>
-                      </Assign.Value>
-                    </Assign>
-                    <ui:LogMessage DisplayName="Log the success message with the extracted dollar value." sap:VirtualizedContainerService.HintSize="416,167.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_4">
-                      <ui:LogMessage.Level>
-                        <InArgument x:TypeArguments="ui:LogLevel">
-                          <Literal x:TypeArguments="ui:LogLevel" sap2010:WorkflowViewState.IdRef="Literal`1_3" Value="Info" />
-                        </InArgument>
-                      </ui:LogMessage.Level>
-                      <ui:LogMessage.Message>
-                        <InArgument x:TypeArguments="x:Object">
-                          <VisualBasicValue x:TypeArguments="x:Object" ExpressionText="String.Format(&quot;Valor del Dólar extraído correctamente: {0}&quot;, strValorUSD)" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_3" />
-                        </InArgument>
-                      </ui:LogMessage.Message>
-                    </ui:LogMessage>
-                  </Sequence>
+                  <ui:LogMessage DisplayName="Log a placeholder message for opening the browser and getting the text, as UI Automation activities are not available." sap:VirtualizedContainerService.HintSize="416,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_3">
+                    <ui:LogMessage.Level>
+                      <InArgument x:TypeArguments="ui:LogLevel">
+                        <Literal x:TypeArguments="ui:LogLevel" sap2010:WorkflowViewState.IdRef="Literal`1_2" Value="Info" />
+                      </InArgument>
+                    </ui:LogMessage.Level>
+                    <ui:LogMessage.Message>
+                      <InArgument x:TypeArguments="x:Object">
+                        <VisualBasicValue x:TypeArguments="x:Object" ExpressionText="&quot;Placeholder for: Use Application/Browser (Edge, https://www.google.com/finance/quote/USD-COP) and Get Text.&quot;" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_1" />
+                      </InArgument>
+                    </ui:LogMessage.Message>
+                  </ui:LogMessage>
+                  <Assign DisplayName="Assign a placeholder value to the strValorUSD variable." sap:VirtualizedContainerService.HintSize="416,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_2">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">
+                        <VisualBasicReference x:TypeArguments="x:String" ExpressionText="strValorUSD" sap2010:WorkflowViewState.IdRef="VisualBasicReference`1_1" />
+                      </OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">
+                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;5000.00&quot;" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_2" />
+                      </InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:LogMessage DisplayName="Log the success message with the extracted dollar value." sap:VirtualizedContainerService.HintSize="416,167.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_4">
+                    <ui:LogMessage.Level>
+                      <InArgument x:TypeArguments="ui:LogLevel">
+                        <Literal x:TypeArguments="ui:LogLevel" sap2010:WorkflowViewState.IdRef="Literal`1_3" Value="Info" />
+                      </InArgument>
+                    </ui:LogMessage.Level>
+                    <ui:LogMessage.Message>
+                      <InArgument x:TypeArguments="x:Object">
+                        <VisualBasicValue x:TypeArguments="x:Object" ExpressionText="String.Format(&quot;Valor del Dólar extraído correctamente: {0}&quot;, strValorUSD)" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_3" />
+                      </InArgument>
+                    </ui:LogMessage.Message>
+                  </ui:LogMessage>
                 </Sequence>
               </TryCatch.Try>
               <TryCatch.Catches>
@@ -315,7 +308,7 @@
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="484,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="450,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_9">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -326,7 +319,7 @@
                 </Catch>
               </TryCatch.Catches>
               <TryCatch.Finally>
-                <Sequence DisplayName="Finalmente" sap:VirtualizedContainerService.HintSize="484,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                <Sequence DisplayName="Finalmente" sap:VirtualizedContainerService.HintSize="450,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_12">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
