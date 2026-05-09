@@ -5,6 +5,7 @@
     <x:Property Name="UiPathEventObjectType" Type="InArgument(x:String)" />
     <x:Property Name="UiPathEventObjectId" Type="InArgument(x:String)" />
     <x:Property Name="UiPathAdditionalEventData" Type="InArgument(x:String)" />
+    <x:Property Name="PathExcel" Type="OutArgument(x:String)" />
   </x:Members>
   <this:Inicializacion.UiPathEventConnector>
     <InArgument x:TypeArguments="x:String" />
@@ -21,6 +22,9 @@
   <this:Inicializacion.UiPathAdditionalEventData>
     <InArgument x:TypeArguments="x:String" />
   </this:Inicializacion.UiPathAdditionalEventData>
+  <this:Inicializacion.PathExcel>
+    <OutArgument x:TypeArguments="x:String" />
+  </this:Inicializacion.PathExcel>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
@@ -235,9 +239,8 @@
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="611,1999" sap2010:WorkflowViewState.IdRef="Sequence_14">
+  <Sequence sap:VirtualizedContainerService.HintSize="556,1630.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_21">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="PathExcel" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtHeaders" />
       <Variable x:TypeArguments="x:Boolean" Name="fileExists" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtDivisas" />
@@ -251,149 +254,156 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ManualTrigger Result="{x:Null}" DisplayName="Iniciar el proceso manualmente." sap:VirtualizedContainerService.HintSize="523,79" sap2010:WorkflowViewState.IdRef="ManualTrigger_3" />
-    <ui:LogMessage DisplayName="Registrar el inicio de la limpieza y validación de archivos." sap:VirtualizedContainerService.HintSize="523,175" sap2010:WorkflowViewState.IdRef="LogMessage_6">
+    <ui:ManualTrigger Result="{x:Null}" DisplayName="Iniciar el proceso manualmente." sap:VirtualizedContainerService.HintSize="556,78.66666666666667" sap2010:WorkflowViewState.IdRef="ManualTrigger_4" />
+    <ui:LogMessage DisplayName="Registrar el inicio de la limpieza y validación de archivos." sap:VirtualizedContainerService.HintSize="556,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_9">
       <ui:LogMessage.Level>
         <InArgument x:TypeArguments="ui:LogLevel">
-          <Literal x:TypeArguments="ui:LogLevel" sap2010:WorkflowViewState.IdRef="Literal`1_6" Value="Info" />
+          <Literal x:TypeArguments="ui:LogLevel" sap2010:WorkflowViewState.IdRef="Literal`1_1" Value="Info" />
         </InArgument>
       </ui:LogMessage.Level>
       <ui:LogMessage.Message>
         <InArgument x:TypeArguments="x:Object">
-          <VisualBasicValue x:TypeArguments="x:Object" ExpressionText="&quot;Iniciando limpieza de entorno y validación de archivos locales&quot;" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_10" />
+          <VisualBasicValue x:TypeArguments="x:Object" ExpressionText="&quot;Iniciando limpieza de entorno y validación de archivos locales&quot;" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_1" />
         </InArgument>
       </ui:LogMessage.Message>
     </ui:LogMessage>
-    <ui:KillProcess ContinueOnError="{x:Null}" Process="{x:Null}" DisplayName="Cerrar todas las instancias del proceso de Excel." sap:VirtualizedContainerService.HintSize="523,175" sap2010:WorkflowViewState.IdRef="KillProcess_4">
+    <ui:KillProcess ContinueOnError="{x:Null}" Process="{x:Null}" DisplayName="Cerrar todas las instancias del proceso de Excel." sap:VirtualizedContainerService.HintSize="556,176.66666666666666" sap2010:WorkflowViewState.IdRef="KillProcess_5">
       <ui:KillProcess.AppliesTo>
         <InArgument x:TypeArguments="ui:KillProcessApplyOn">
-          <Literal x:TypeArguments="ui:KillProcessApplyOn" sap2010:WorkflowViewState.IdRef="Literal`1_8" />
+          <Literal x:TypeArguments="ui:KillProcessApplyOn" sap2010:WorkflowViewState.IdRef="Literal`1_3" />
         </InArgument>
       </ui:KillProcess.AppliesTo>
       <ui:KillProcess.ProcessName>
         <InArgument x:TypeArguments="x:String">
-          <Literal x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="Literal`1_7">EXCEL</Literal>
+          <Literal x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="Literal`1_2">EXCEL</Literal>
         </InArgument>
       </ui:KillProcess.ProcessName>
     </ui:KillProcess>
-    <Assign DisplayName="Establecer la ruta relativa para el archivo de Excel de control." sap:VirtualizedContainerService.HintSize="523,175" sap2010:WorkflowViewState.IdRef="Assign_3">
+    <Assign DisplayName="Establecer la ruta relativa para el archivo de Excel de control." sap:VirtualizedContainerService.HintSize="556,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_4">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">
-          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="PathExcel" sap2010:WorkflowViewState.IdRef="VisualBasicReference`1_4" />
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="PathExcel" sap2010:WorkflowViewState.IdRef="VisualBasicReference`1_1" />
         </OutArgument>
       </Assign.To>
       <Assign.Value>
         <InArgument x:TypeArguments="x:String">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Path.Combine(Environment.CurrentDirectory, &quot;Control_Divisas.xlsx&quot;)" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_11" />
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;C:\Users\ignacioj.julio\Documents\UiPath\RPA_Consulta_Divisas_Cash_AA2\Control_Divisas.xlsx&quot;" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_2" />
         </InArgument>
       </Assign.Value>
     </Assign>
-    <ui:FileExistsX DisplayName="Verificar si el archivo de Excel existe en la ruta especificada." sap:VirtualizedContainerService.HintSize="523,167" sap2010:WorkflowViewState.IdRef="FileExistsX_3">
+    <ui:FileExistsX DisplayName="Verificar si el archivo de Excel existe en la ruta especificada." sap:VirtualizedContainerService.HintSize="556,168.66666666666666" sap2010:WorkflowViewState.IdRef="FileExistsX_4">
       <ui:FileExistsX.Exists>
         <OutArgument x:TypeArguments="x:Boolean">
-          <VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="fileExists" sap2010:WorkflowViewState.IdRef="VisualBasicReference`1_5" />
+          <VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="fileExists" sap2010:WorkflowViewState.IdRef="VisualBasicReference`1_2" />
         </OutArgument>
       </ui:FileExistsX.Exists>
       <ui:FileExistsX.Path>
         <InArgument x:TypeArguments="x:String">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="PathExcel" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_12" />
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="PathExcel" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_3" />
         </InArgument>
       </ui:FileExistsX.Path>
     </ui:FileExistsX>
-    <If DisplayName="Si el archivo de Excel no existe, registrar un error y terminar el flujo de trabajo." sap:VirtualizedContainerService.HintSize="523,1205" sap2010:WorkflowViewState.IdRef="If_3">
+    <If DisplayName="Si el archivo de Excel no existe, registrar un error y terminar el flujo de trabajo." sap:VirtualizedContainerService.HintSize="556,830.6666666666666" sap2010:WorkflowViewState.IdRef="If_4">
       <If.Condition>
         <InArgument x:TypeArguments="x:Boolean">
-          <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="Not fileExists" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_13" />
+          <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="Not fileExists" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_4" />
         </InArgument>
       </If.Condition>
       <If.Then>
-        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="521,1055" sap2010:WorkflowViewState.IdRef="Sequence_12">
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="554,680" sap2010:WorkflowViewState.IdRef="Sequence_19">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="486,995" sap2010:WorkflowViewState.IdRef="Sequence_11">
+          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="520,620" sap2010:WorkflowViewState.IdRef="Sequence_18">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:LogMessage DisplayName="Registrar un mensaje de advertencia indicando que el archivo no fue encontrado y se procederá a crearlo." sap:VirtualizedContainerService.HintSize="452,175" sap2010:WorkflowViewState.IdRef="LogMessage_7">
-              <ui:LogMessage.Level>
-                <InArgument x:TypeArguments="ui:LogLevel">
-                  <Literal x:TypeArguments="ui:LogLevel" sap2010:WorkflowViewState.IdRef="Literal`1_9" Value="Warn" />
-                </InArgument>
-              </ui:LogMessage.Level>
-              <ui:LogMessage.Message>
-                <InArgument x:TypeArguments="x:Object">
-                  <VisualBasicValue x:TypeArguments="x:Object" ExpressionText="&quot;Archivo Control_Divisas.xlsx no encontrado. Creando archivo nuevo en: &quot; &amp; PathExcel" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_14" />
-                </InArgument>
-              </ui:LogMessage.Message>
-            </ui:LogMessage>
-            <ui:BuildDataTable DisplayName="Construir un DataTable con las columnas de encabezado requeridas." sap:VirtualizedContainerService.HintSize="452,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_2" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Column1&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Column2&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;  &lt;TableName&gt;&#xD;&#xA;    &lt;Column1&gt;text&lt;/Column1&gt;&#xD;&#xA;    &lt;Column2&gt;1&lt;/Column2&gt;&#xD;&#xA;  &lt;/TableName&gt;&#xD;&#xA;&lt;/NewDataSet&gt;">
-              <ui:BuildDataTable.DataTable>
-                <OutArgument x:TypeArguments="sd:DataTable">
-                  <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dtHeaders" sap2010:WorkflowViewState.IdRef="VisualBasicReference`1_6" />
-                </OutArgument>
-              </ui:BuildDataTable.DataTable>
-            </ui:BuildDataTable>
-            <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Abrir un nuevo proceso de Excel para el archivo de control." sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_1">
-              <ueab:ExcelProcessScopeX.Body>
-                <ActivityAction x:TypeArguments="ui:IExcelProcess">
-                  <ActivityAction.Argument>
-                    <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
-                  </ActivityAction.Argument>
-                  <Sequence DisplayName="" sap2010:WorkflowViewState.IdRef="Sequence_10">
-                    <ueab:ExcelApplicationCard ReadFormatting="{x:Null}" SensitivityLabel="{x:Null}" DisplayName="Abrir o crear el archivo Excel de control." sap:VirtualizedContainerService.HintSize="452,502" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_2" ResizeWindow="None" SensitivityOperation="None" Visible="False">
-                      <ueab:ExcelApplicationCard.Body>
-                        <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
-                          <ActivityAction.Argument>
-                            <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
-                          </ActivityAction.Argument>
-                          <Sequence DisplayName="" sap2010:WorkflowViewState.IdRef="Sequence_9">
-                            <ueab:WriteRangeX DisplayName="Escribir los encabezados en la hoja &quot;Hoja1&quot; del archivo Excel." sap:VirtualizedContainerService.HintSize="416,213" sap2010:WorkflowViewState.IdRef="WriteRangeX_2" IgnoreEmptySource="False">
-                              <ueab:WriteRangeX.Destination>
-                                <InArgument x:TypeArguments="ue:IReadWriteRangeRef">
-                                  <VisualBasicValue x:TypeArguments="ue:IReadWriteRangeRef" ExpressionText="Excel.Sheet(&quot;Hoja1&quot;).Range(&quot;A1&quot;)" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_18" />
-                                </InArgument>
-                              </ueab:WriteRangeX.Destination>
-                              <ueab:WriteRangeX.Source>
-                                <InArgument x:TypeArguments="sd:DataTable">
-                                  <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dtHeaders" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_17" />
-                                </InArgument>
-                              </ueab:WriteRangeX.Source>
-                            </ueab:WriteRangeX>
-                          </Sequence>
-                        </ActivityAction>
-                      </ueab:ExcelApplicationCard.Body>
-                      <ueab:ExcelApplicationCard.WorkbookPath>
-                        <InArgument x:TypeArguments="x:String">
-                          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="PathExcel" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_16" />
-                        </InArgument>
-                      </ueab:ExcelApplicationCard.WorkbookPath>
-                    </ueab:ExcelApplicationCard>
-                  </Sequence>
-                </ActivityAction>
-              </ueab:ExcelProcessScopeX.Body>
-            </ueab:ExcelProcessScopeX>
-            <ui:LogMessage DisplayName="Registrar un mensaje informativo de que el archivo Excel fue creado automáticamente." sap:VirtualizedContainerService.HintSize="452,166" sap2010:WorkflowViewState.IdRef="LogMessage_8">
-              <ui:LogMessage.Level>
-                <InArgument x:TypeArguments="ui:LogLevel">
-                  <Literal x:TypeArguments="ui:LogLevel" sap2010:WorkflowViewState.IdRef="Literal`1_10" Value="Info" />
-                </InArgument>
-              </ui:LogMessage.Level>
-              <ui:LogMessage.Message>
-                <InArgument x:TypeArguments="x:Object">
-                  <VisualBasicValue x:TypeArguments="x:Object" ExpressionText="&quot;Archivo Control_Divisas.xlsx creado automáticamente con encabezados. El proceso continúa.&quot;" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_15" />
-                </InArgument>
-              </ui:LogMessage.Message>
-            </ui:LogMessage>
+            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="486,537.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_17">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Registrar un mensaje de advertencia indicando que el archivo no fue encontrado y se procederá a crearlo." sap:VirtualizedContainerService.HintSize="452,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_10">
+                <ui:LogMessage.Level>
+                  <InArgument x:TypeArguments="ui:LogLevel">
+                    <Literal x:TypeArguments="ui:LogLevel" sap2010:WorkflowViewState.IdRef="Literal`1_4" Value="Warn" />
+                  </InArgument>
+                </ui:LogMessage.Level>
+                <ui:LogMessage.Message>
+                  <InArgument x:TypeArguments="x:Object">
+                    <VisualBasicValue x:TypeArguments="x:Object" ExpressionText="&quot;Archivo Control_Divisas.xlsx no encontrado. Creando archivo nuevo en: &quot; &amp; PathExcel" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_5" />
+                  </InArgument>
+                </ui:LogMessage.Message>
+              </ui:LogMessage>
+              <ui:BuildDataTable DisplayName="Construir un DataTable con las columnas de encabezado requeridas." sap:VirtualizedContainerService.HintSize="452,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_3" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Column1&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Column2&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Column1&gt;text&lt;/Column1&gt;&#xA;    &lt;Column2&gt;1&lt;/Column2&gt;&#xA;  &lt;/TableName&gt;&#xA;&lt;/NewDataSet&gt;">
+                <ui:BuildDataTable.DataTable>
+                  <OutArgument x:TypeArguments="sd:DataTable">
+                    <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dtHeaders" sap2010:WorkflowViewState.IdRef="VisualBasicReference`1_3" />
+                  </OutArgument>
+                </ui:BuildDataTable.DataTable>
+              </ui:BuildDataTable>
+              <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Abrir un nuevo proceso de Excel para el archivo de control." sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_2">
+                <ueab:ExcelProcessScopeX.Body>
+                  <ActivityAction x:TypeArguments="ui:IExcelProcess">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                      <ueab:ExcelApplicationCard DisplayName="Abrir o crear el archivo Excel de control." sap:VirtualizedContainerService.HintSize="452,502" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_3" ResizeWindow="None" Visible="False">
+                        <ueab:ExcelApplicationCard.Body>
+                          <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
+                            <ActivityAction.Argument>
+                              <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
+                            </ActivityAction.Argument>
+                            <Sequence DisplayName="" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                              <ueab:WriteRangeX DisplayName="Escribir los encabezados en la hoja &quot;Hoja1&quot; del archivo Excel." sap:VirtualizedContainerService.HintSize="416,213" sap2010:WorkflowViewState.IdRef="WriteRangeX_3" IgnoreEmptySource="False">
+                                <ueab:WriteRangeX.Destination>
+                                  <InArgument x:TypeArguments="ue:IReadWriteRangeRef">
+                                    <VisualBasicValue x:TypeArguments="ue:IReadWriteRangeRef" ExpressionText="Excel.Sheet(&quot;Hoja1&quot;).Range(&quot;A1&quot;)" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_9" />
+                                  </InArgument>
+                                </ueab:WriteRangeX.Destination>
+                                <ueab:WriteRangeX.Source>
+                                  <InArgument x:TypeArguments="sd:DataTable">
+                                    <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dtHeaders" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_8" />
+                                  </InArgument>
+                                </ueab:WriteRangeX.Source>
+                              </ueab:WriteRangeX>
+                            </Sequence>
+                          </ActivityAction>
+                        </ueab:ExcelApplicationCard.Body>
+                        <ueab:ExcelApplicationCard.WorkbookPath>
+                          <InArgument x:TypeArguments="x:String">
+                            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="PathExcel" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_7" />
+                          </InArgument>
+                        </ueab:ExcelApplicationCard.WorkbookPath>
+                      </ueab:ExcelApplicationCard>
+                    </Sequence>
+                  </ActivityAction>
+                </ueab:ExcelProcessScopeX.Body>
+              </ueab:ExcelProcessScopeX>
+              <ui:LogMessage DisplayName="Registrar un mensaje informativo de que el archivo Excel fue creado automáticamente." sap:VirtualizedContainerService.HintSize="452,166" sap2010:WorkflowViewState.IdRef="LogMessage_11">
+                <ui:LogMessage.Level>
+                  <InArgument x:TypeArguments="ui:LogLevel">
+                    <Literal x:TypeArguments="ui:LogLevel" sap2010:WorkflowViewState.IdRef="Literal`1_5" Value="Info" />
+                  </InArgument>
+                </ui:LogMessage.Level>
+                <ui:LogMessage.Message>
+                  <InArgument x:TypeArguments="x:Object">
+                    <VisualBasicValue x:TypeArguments="x:Object" ExpressionText="&quot;Archivo Control_Divisas.xlsx creado automáticamente con encabezados. El proceso continúa.&quot;" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_6" />
+                  </InArgument>
+                </ui:LogMessage.Message>
+              </ui:LogMessage>
+            </Sequence>
           </Sequence>
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Else" sap2010:WorkflowViewState.IdRef="Sequence_13" />
+        <Sequence DisplayName="Else" sap2010:WorkflowViewState.IdRef="Sequence_20" />
       </If.Else>
     </If>
   </Sequence>

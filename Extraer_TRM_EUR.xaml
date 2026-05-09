@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Extraer_TRM_EUR" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Extraer_TRM_EUR" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uwah="clr-namespace:UiPath.Web.Activities.Http;assembly=UiPath.Web.Activities" xmlns:uwahm="clr-namespace:UiPath.Web.Activities.Http.Models;assembly=UiPath.Web.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="UiPathEventConnector" Type="InArgument(x:String)" />
     <x:Property Name="UiPathEvent" Type="InArgument(x:String)" />
@@ -154,6 +154,12 @@
       <x:String>UiPath.Platform.ObjectLibrary</x:String>
       <x:String>UiPath.Platform.SyncObjects</x:String>
       <x:String>UiPath.Semantic.Activities</x:String>
+      <x:String>UiPath.Web.Activities.Http.Models</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.Web.Activities.Http</x:String>
+      <x:String>UiPath.Sdk.Activities</x:String>
+      <x:String>UiPath.Sdk.Activities.DependencyInjection.Contracts</x:String>
+      <x:String>UiPath.Sdk.Activities.DependencyInjection</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -248,140 +254,179 @@
       <AssemblyReference>System.Net.Sockets</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="931,1192" sap2010:WorkflowViewState.IdRef="Sequence_6">
+  <Sequence sap:VirtualizedContainerService.HintSize="900,1161.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_33">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strValorUSD" />
+      <Variable x:TypeArguments="uwahm:HttpResponseSummary" Name="htmlResponse" />
+      <Variable x:TypeArguments="x:String" Name="htmlContent" />
       <Variable x:TypeArguments="x:String" Name="PathExcel" />
       <Variable x:TypeArguments="x:Boolean" Name="fileExists" />
-      <Variable x:TypeArguments="x:String" Name="UiPathEventConnector" />
-      <Variable x:TypeArguments="x:String" Name="UiPathEvent" />
-      <Variable x:TypeArguments="x:String" Name="UiPathEventObjectType" />
-      <Variable x:TypeArguments="x:String" Name="UiPathEventObjectId" />
-      <Variable x:TypeArguments="x:String" Name="UiPathAdditionalEventData" />
+      <Variable x:TypeArguments="x:Object" Name="WSSessionData" />
+      <Variable x:TypeArguments="x:Double" Name="numValorUSD" />
+      <Variable x:TypeArguments="x:Double" Name="numValorEUR" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtDivisas" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ManualTrigger Result="{x:Null}" DisplayName="Start the process manually." sap:VirtualizedContainerService.HintSize="524,79" sap2010:WorkflowViewState.IdRef="ManualTrigger_1" />
-    <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry extracting the EUR to COP exchange rate up to 3 times." sap:VirtualizedContainerService.HintSize="524,1090" sap2010:WorkflowViewState.IdRef="RetryScope_1">
+    <ui:ManualTrigger Result="{x:Null}" DisplayName="Start the process manually." sap:VirtualizedContainerService.HintSize="452,78.66666666666667" sap2010:WorkflowViewState.IdRef="ManualTrigger_10" />
+    <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" DisplayName="Retry extracting the EUR to COP exchange rate up to 3 times." sap:VirtualizedContainerService.HintSize="452,1060" sap2010:WorkflowViewState.IdRef="RetryScope_10">
       <ui:RetryScope.ActivityBody>
         <ActivityAction>
-          <Sequence DisplayName="ActivityBody" sap:VirtualizedContainerService.HintSize="522,892" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <Sequence DisplayName="ActivityBody" sap:VirtualizedContainerService.HintSize="450,862" sap2010:WorkflowViewState.IdRef="Sequence_32">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <TryCatch DisplayName="Try to extract the exchange rate and handle potential errors." sap:VirtualizedContainerService.HintSize="488,832" sap2010:WorkflowViewState.IdRef="TryCatch_1">
-              <TryCatch.Try>
-                <Sequence DisplayName="Intentar" sap:VirtualizedContainerService.HintSize="486,487" sap2010:WorkflowViewState.IdRef="Sequence_3">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Edge EUR  COP 4.356,1274 (▲ 2.42%) Euro  Peso" sap:VirtualizedContainerService.HintSize="452,427" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="26b0aa5b-430c-4b8c-b420-de672e31468d" Version="V2">
-                    <uix:NApplicationCard.Body>
-                      <ActivityAction x:TypeArguments="x:Object">
-                        <ActivityAction.Argument>
-                          <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
-                        </ActivityAction.Argument>
-                        <Sequence DisplayName="Hacer" sap:VirtualizedContainerService.HintSize="450,233" sap2010:WorkflowViewState.IdRef="Sequence_2">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <uix:NUITask DisplayName="Get the text of the exchange rate value." sap:VirtualizedContainerService.HintSize="334,237" sap2010:WorkflowViewState.IdRef="NUITask_1" ScopeIdentifier="26b0aa5b-430c-4b8c-b420-de672e31468d" Version="V5">
-                            <uix:NUITask.Prompt>
-                              <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
-                                <InArgument x:TypeArguments="x:String">Get the text from the main price element on the page.</InArgument>
-                              </scg:List>
-                            </uix:NUITask.Prompt>
-                            <uix:NUITask.Result>
-                              <OutArgument x:TypeArguments="x:String">
-                                <VisualBasicReference x:TypeArguments="x:String" ExpressionText="strValorEUR" sap2010:WorkflowViewState.IdRef="VisualBasicReference`1_1" />
-                              </OutArgument>
-                            </uix:NUITask.Result>
-                          </uix:NUITask>
-                          <ui:LogMessage DisplayName="Log a success message with the extracted Euro value." sap:VirtualizedContainerService.HintSize="416,78" sap2010:WorkflowViewState.IdRef="LogMessage_1">
-                            <ui:LogMessage.Level>
-                              <InArgument x:TypeArguments="ui:LogLevel">
-                                <Literal x:TypeArguments="ui:LogLevel" sap2010:WorkflowViewState.IdRef="Literal`1_7" Value="Info" />
-                              </InArgument>
-                            </ui:LogMessage.Level>
-                            <ui:LogMessage.Message>
-                              <InArgument x:TypeArguments="x:Object">
-                                <VisualBasicValue x:TypeArguments="x:Object" ExpressionText="String.Format(&quot;Valor del Euro extraído correctamente: {0}&quot;, strValorEUR)" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_1" />
-                              </InArgument>
-                            </ui:LogMessage.Message>
-                          </ui:LogMessage>
-                        </Sequence>
-                      </ActivityAction>
-                    </uix:NApplicationCard.Body>
-                    <uix:NApplicationCard.CloseMode>
-                      <InArgument x:TypeArguments="uix:NAppCloseMode">
-                        <Literal x:TypeArguments="uix:NAppCloseMode" sap2010:WorkflowViewState.IdRef="Literal`1_3" />
-                      </InArgument>
-                    </uix:NApplicationCard.CloseMode>
-                    <uix:NApplicationCard.HealingAgentBehavior>
-                      <InArgument x:TypeArguments="uix:NHealingAgentBehavior">
-                        <Literal x:TypeArguments="uix:NHealingAgentBehavior" sap2010:WorkflowViewState.IdRef="Literal`1_5" />
-                      </InArgument>
-                    </uix:NApplicationCard.HealingAgentBehavior>
-                    <uix:NApplicationCard.IsIncognito>
-                      <InArgument x:TypeArguments="x:Boolean">
-                        <Literal x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="Literal`1_4" Value="True" />
-                      </InArgument>
-                    </uix:NApplicationCard.IsIncognito>
-                    <uix:NApplicationCard.OCREngine>
-                      <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
-                        <ActivityFunc.Argument>
-                          <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
-                        </ActivityFunc.Argument>
-                      </ActivityFunc>
-                    </uix:NApplicationCard.OCREngine>
-                    <uix:NApplicationCard.OpenMode>
-                      <InArgument x:TypeArguments="uix:NAppOpenMode">
-                        <Literal x:TypeArguments="uix:NAppOpenMode" sap2010:WorkflowViewState.IdRef="Literal`1_2" Value="IfNotOpen" />
-                      </InArgument>
-                    </uix:NApplicationCard.OpenMode>
-                    <uix:NApplicationCard.TargetApp>
-                      <uix:TargetApp Area="-8, -8, 1936, 1056" BrowserType="Edge" ContentHash="kNQU2r3QaE-q4KLOWmyNTQ" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAKLSURBVFhH7ZbPa9NgGMcrdDmoTN3BQ1OLiCdhpzUdDBSh0ymyeTDZTgNPnoWktkPEDN3E/0BvHtsOdnEXIa1OsTp/njwLAzFvtlU97OIi8Xle37RZ8mZNN+Jl/cKXJu/75P180/dpmkRPe5HjOAekyuS5XFlWXGerysT40xsHWUm8kqpKKVu+5vgtVeQGK4lXAFoMCWCzknjVC7B/AvypJTW71lf1Gsf+SwDHSJ7dMpIOz5erV5ZjD2DXBIUHR19duLQSf4C6MMmDo/dJgOfCFA+O7hQgo26cEQuWwjNdPIr2EuC0vtEvquRNSjUdv+niXlkXpPm1vPTbyktO27nvm3pmlgdHR9kCDAHArx0DBOH/3JwaXPZCbaPvMXh1pwDZivyKLZtIFYjmh3MD8ODopjL4uhWgLsxirdPoH7CN5BI3AMDPV5XDWJcukFs8OBrnt4kHR7cC1IR7rJQKX0bGFsZv4tftwqWy/LINt0p+qKiRz25P0EW84sHRNEBdmMMa1lQGdPF1ehEI34iyZfkbBHlx8dn0IRwTNWsmAFfJp7T+a8BtTHqxVzw4en1iaAbn/R0Nd/NkSHfoq9fI4vTxNty87QVTa+QjwnEehWuxw7Z4cGhMuucUrpFGcGHzC/7W6QIgqLkTqFHJh0zp5zFWEi4/fH10mO65/84D1sxN3BK4y7vB+Yhw1HZ47j6OdYTvZM18f1L/cZQuHkWtAPBAwvMwOHzNj0TVXPWPew198K4rOIrCR4cf4HEYPK0RHeexoQCy5J9HQ7iVU8XmEazrSmv53EP87AR3hc8B2PcCeMutgVBvdwV3FRXuVapIRnBL8Dq8ng3vTry/zxNFMsamQ+U+YNhpT10okfgLvATmitW+Wv0AAAAASUVORK5CYII=" InformativeScreenshot="00dec6059cd56178960f3cc3c664eee4.jpg" Reference="hZtL4q9dnk6WEs7UEi8-Ow/GauTrZ0eUk6grznxd7ZsUQ" Selector="&lt;html app='msedge.exe' title='EUR / COP 4.356,1274 (▲ 2.42%) Euro / Peso colombiano | Google Finance' /&gt;" Url="https://www.google.com/finance/beta/quote/EUR-COP" Version="V2" />
-                    </uix:NApplicationCard.TargetApp>
-                  </uix:NApplicationCard>
-                </Sequence>
-              </TryCatch.Try>
-              <TryCatch.Catches>
-                <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_1">
-                  <ActivityAction x:TypeArguments="s:Exception">
-                    <ActivityAction.Argument>
-                      <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
-                    </ActivityAction.Argument>
-                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="486,90" sap2010:WorkflowViewState.IdRef="Sequence_4">
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                    </Sequence>
-                  </ActivityAction>
-                </Catch>
-              </TryCatch.Catches>
-              <TryCatch.Finally>
-                <Sequence DisplayName="Finalmente" sap:VirtualizedContainerService.HintSize="486,90" sap2010:WorkflowViewState.IdRef="Sequence_7">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </Sequence>
-              </TryCatch.Finally>
-            </TryCatch>
+            <uwah:NetHttpRequest BasicAuthPassword="{x:Null}" BasicAuthSecurePassword="{x:Null}" BasicAuthUsername="{x:Null}" BinaryPayload="{x:Null}" ClientCertPassword="{x:Null}" ClientCertPath="{x:Null}" ClientCertSecurePassword="{x:Null}" Cookies="{x:Null}" CustomNegotiatedAuthCredentials="{x:Null}" FilePath="{x:Null}" FormData="{x:Null}" Headers="{x:Null}" LocalFiles="{x:Null}" OAuthToken="{x:Null}" OutputFileName="{x:Null}" OutputFileTargetFolder="{x:Null}" Parameters="{x:Null}" PathResource="{x:Null}" ProxyConfiguration="{x:Null}" ResourceFiles="{x:Null}" TextPayload="{x:Null}" AuthenticationType="None" DisplayName="Send HTTP request to get currency exchange rate" FileOverwrite="AutoRename" sap:VirtualizedContainerService.HintSize="416,281.3333333333333" sap2010:WorkflowViewState.IdRef="NetHttpRequest_9" Method="GET" RequestBodyType="None" RetryPolicyType="None" RetryStatusCodes="[New List (Of System.Net.HttpStatusCode) From _&#xD;&#xA;{&#xD;&#xA;&#x9;System.Net.HttpStatusCode.RequestTimeout,&#xD;&#xA;&#x9;System.Net.HttpStatusCode.TooManyRequests,&#xD;&#xA;&#x9;System.Net.HttpStatusCode.InternalServerError,&#xD;&#xA;&#x9;System.Net.HttpStatusCode.BadGateway,&#xD;&#xA;&#x9;System.Net.HttpStatusCode.ServiceUnavailable,&#xD;&#xA;&#x9;System.Net.HttpStatusCode.GatewayTimeout&#xD;&#xA;}]">
+              <uwah:NetHttpRequest.ContinueOnError>
+                <InArgument x:TypeArguments="x:Boolean">
+                  <Literal x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="Literal`1_29" Value="True" />
+                </InArgument>
+              </uwah:NetHttpRequest.ContinueOnError>
+              <uwah:NetHttpRequest.DisableSslVerification>
+                <InArgument x:TypeArguments="x:Boolean">
+                  <Literal x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="Literal`1_25" />
+                </InArgument>
+              </uwah:NetHttpRequest.DisableSslVerification>
+              <uwah:NetHttpRequest.EnableCookies>
+                <InArgument x:TypeArguments="x:Boolean">
+                  <Literal x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="Literal`1_27" Value="True" />
+                </InArgument>
+              </uwah:NetHttpRequest.EnableCookies>
+              <uwah:NetHttpRequest.FollowRedirects>
+                <InArgument x:TypeArguments="x:Boolean">
+                  <Literal x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="Literal`1_30" Value="True" />
+                </InArgument>
+              </uwah:NetHttpRequest.FollowRedirects>
+              <uwah:NetHttpRequest.FormDataParts>
+                <InArgument x:TypeArguments="scg:IEnumerable(uwahm:FormDataPart)">
+                  <VisualBasicValue x:TypeArguments="scg:IEnumerable(uwahm:FormDataPart)" ExpressionText="New List(Of UiPath.Web.Activities.Http.Models.FormDataPart)() From {&#xD;&#xA;                New UiPath.Web.Activities.Http.Models.FileFormDataPart(),&#xD;&#xA;                New UiPath.Web.Activities.Http.Models.BinaryFormDataPart(),&#xD;&#xA;                New UiPath.Web.Activities.Http.Models.TextFormDataPart()&#xD;&#xA;            }" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_6" />
+                </InArgument>
+              </uwah:NetHttpRequest.FormDataParts>
+              <uwah:NetHttpRequest.InitialDelay>
+                <InArgument x:TypeArguments="x:Int32">
+                  <Literal x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="Literal`1_34" Value="500" />
+                </InArgument>
+              </uwah:NetHttpRequest.InitialDelay>
+              <uwah:NetHttpRequest.MaxRedirects>
+                <InArgument x:TypeArguments="x:Int32">
+                  <Literal x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="Literal`1_31" Value="3" />
+                </InArgument>
+              </uwah:NetHttpRequest.MaxRedirects>
+              <uwah:NetHttpRequest.MaxRetryAfterDelay>
+                <InArgument x:TypeArguments="x:Int32">
+                  <Literal x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="Literal`1_37" Value="30000" />
+                </InArgument>
+              </uwah:NetHttpRequest.MaxRetryAfterDelay>
+              <uwah:NetHttpRequest.Multiplier>
+                <InArgument x:TypeArguments="x:Double">
+                  <Literal x:TypeArguments="x:Double" sap2010:WorkflowViewState.IdRef="Literal`1_35" Value="2" />
+                </InArgument>
+              </uwah:NetHttpRequest.Multiplier>
+              <uwah:NetHttpRequest.PreferRetryAfterValue>
+                <InArgument x:TypeArguments="x:Boolean">
+                  <Literal x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="Literal`1_38" Value="True" />
+                </InArgument>
+              </uwah:NetHttpRequest.PreferRetryAfterValue>
+              <uwah:NetHttpRequest.RequestUrl>
+                <InArgument x:TypeArguments="x:String">
+                  <Literal x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="Literal`1_24">https://example.com/currency_exchange</Literal>
+                </InArgument>
+              </uwah:NetHttpRequest.RequestUrl>
+              <uwah:NetHttpRequest.Result>
+                <OutArgument x:TypeArguments="uwahm:HttpResponseSummary">
+                  <VisualBasicReference x:TypeArguments="uwahm:HttpResponseSummary" ExpressionText="htmlResponse" sap2010:WorkflowViewState.IdRef="VisualBasicReference`1_3" />
+                </OutArgument>
+              </uwah:NetHttpRequest.Result>
+              <uwah:NetHttpRequest.RetryCount>
+                <InArgument x:TypeArguments="x:Int32">
+                  <Literal x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="Literal`1_33" Value="3" />
+                </InArgument>
+              </uwah:NetHttpRequest.RetryCount>
+              <uwah:NetHttpRequest.SaveRawRequestResponse>
+                <InArgument x:TypeArguments="x:Boolean">
+                  <Literal x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="Literal`1_42" />
+                </InArgument>
+              </uwah:NetHttpRequest.SaveRawRequestResponse>
+              <uwah:NetHttpRequest.SaveResponseAsFile>
+                <InArgument x:TypeArguments="x:Boolean">
+                  <Literal x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="Literal`1_41" />
+                </InArgument>
+              </uwah:NetHttpRequest.SaveResponseAsFile>
+              <uwah:NetHttpRequest.TextPayloadContentType>
+                <InArgument x:TypeArguments="x:String">
+                  <Literal x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="Literal`1_40">application/json</Literal>
+                </InArgument>
+              </uwah:NetHttpRequest.TextPayloadContentType>
+              <uwah:NetHttpRequest.TextPayloadEncoding>
+                <InArgument x:TypeArguments="x:String">
+                  <Literal x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="Literal`1_39">UTF-8</Literal>
+                </InArgument>
+              </uwah:NetHttpRequest.TextPayloadEncoding>
+              <uwah:NetHttpRequest.TimeoutInMiliseconds>
+                <InArgument x:TypeArguments="s:Nullable(x:Int32)">
+                  <Literal x:TypeArguments="s:Nullable(x:Int32)" sap2010:WorkflowViewState.IdRef="Literal`1_28" Value="10000" />
+                </InArgument>
+              </uwah:NetHttpRequest.TimeoutInMiliseconds>
+              <uwah:NetHttpRequest.TlsProtocol>
+                <InArgument x:TypeArguments="uwahm:SupportedTlsProtocols">
+                  <Literal x:TypeArguments="uwahm:SupportedTlsProtocols" sap2010:WorkflowViewState.IdRef="Literal`1_26" />
+                </InArgument>
+              </uwah:NetHttpRequest.TlsProtocol>
+              <uwah:NetHttpRequest.UseJitter>
+                <InArgument x:TypeArguments="x:Boolean">
+                  <Literal x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="Literal`1_36" Value="True" />
+                </InArgument>
+              </uwah:NetHttpRequest.UseJitter>
+              <uwah:NetHttpRequest.UseOsNegotiatedAuthCredentials>
+                <InArgument x:TypeArguments="x:Boolean">
+                  <Literal x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="Literal`1_32" Value="True" />
+                </InArgument>
+              </uwah:NetHttpRequest.UseOsNegotiatedAuthCredentials>
+            </uwah:NetHttpRequest>
+            <ui:LogMessage DisplayName="Log a placeholder message for EUR extraction" sap:VirtualizedContainerService.HintSize="416,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_5">
+              <ui:LogMessage.Level>
+                <InArgument x:TypeArguments="ui:LogLevel">
+                  <Literal x:TypeArguments="ui:LogLevel" sap2010:WorkflowViewState.IdRef="Literal`1_43" Value="Info" />
+                </InArgument>
+              </ui:LogMessage.Level>
+              <ui:LogMessage.Message>
+                <InArgument x:TypeArguments="x:Object">
+                  <VisualBasicValue x:TypeArguments="x:Object" ExpressionText="&quot;Placeholder for: Use Application/Browser (Edge, https://www.google.com/finance/quote/EUR-COP) and Get Text.&quot;" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_7" />
+                </InArgument>
+              </ui:LogMessage.Message>
+            </ui:LogMessage>
+            <Assign DisplayName="Assign a placeholder value to the strValorEUR argument." sap:VirtualizedContainerService.HintSize="416,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_3">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">
+                  <VisualBasicReference x:TypeArguments="x:String" ExpressionText="strValorEUR" sap2010:WorkflowViewState.IdRef="VisualBasicReference`1_4" />
+                </OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">
+                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;4900.00&quot;" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_8" />
+                </InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:LogMessage DisplayName="Log the success message with the extracted EUR value." sap:VirtualizedContainerService.HintSize="416,167.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_6">
+              <ui:LogMessage.Level>
+                <InArgument x:TypeArguments="ui:LogLevel">
+                  <Literal x:TypeArguments="ui:LogLevel" sap2010:WorkflowViewState.IdRef="Literal`1_44" Value="Info" />
+                </InArgument>
+              </ui:LogMessage.Level>
+              <ui:LogMessage.Message>
+                <InArgument x:TypeArguments="x:Object">
+                  <VisualBasicValue x:TypeArguments="x:Object" ExpressionText="String.Format(&quot;Valor del Euro extraído correctamente: {0}&quot;, strValorEUR)" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_9" />
+                </InArgument>
+              </ui:LogMessage.Message>
+            </ui:LogMessage>
           </Sequence>
         </ActivityAction>
       </ui:RetryScope.ActivityBody>
@@ -390,7 +435,7 @@
       </ui:RetryScope.Condition>
       <ui:RetryScope.NumberOfRetries>
         <InArgument x:TypeArguments="x:Int32">
-          <Literal x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="Literal`1_1" Value="3" />
+          <Literal x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="Literal`1_23" Value="3" />
         </InArgument>
       </ui:RetryScope.NumberOfRetries>
     </ui:RetryScope>
